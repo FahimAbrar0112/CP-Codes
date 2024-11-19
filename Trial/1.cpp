@@ -43,4 +43,6 @@ int main(void)
           cout << nth_val << " ";
           nth_val -= step_size;
      }
+
+     
 }
