@@ -1,0 +1,1 @@
+{"name":"Local: test","url":"d:\\CP\\Own\\Graph\\DP\\test.cpp","tests":[{"id":1675341123755,"input":"3\n11\n31\n75\n","output":"12\n33\n75\n"},{"id":1675341226518,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CP\\Own\\Graph\\DP\\test.cpp","group":"local","local":true}

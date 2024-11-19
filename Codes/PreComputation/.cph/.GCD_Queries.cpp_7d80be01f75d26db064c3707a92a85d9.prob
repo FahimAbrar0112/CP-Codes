@@ -1,0 +1,1 @@
+{"name":"Local: GCD_Queries","url":"/home/fahim/My Drive/Coding/CP/Trial/Pre Computation/new Cpp/GCD_Queries.cpp","tests":[{"id":1731707326503,"input":"1\n3 3\n2 6 9\n1 1\n2 2\n2 3\n","output":"3\n1\n2\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/fahim/My Drive/Coding/CP/Trial/Pre Computation/new Cpp/GCD_Queries.cpp","group":"local","local":true}
