@@ -4,67 +4,53 @@ using namespace std;
 const int N = 1e5 + 7;
 const int INF = INT_MAX;
 
-/**
- *       0    1  2  3 4  5  6  7
- *       10  20 30 40 11 21 31 41
- *       p          q           r
- *
- *      n1=q-p+1=3-0+1=4
- *      n2=r-q=7-3=4
- */
-void merge(vector<int> &v, int p, int q, int r);
-void mergeSort(vector<int> &v, int p, int r);
+void mergeSort(vector<int> &v, int l, int r);
+void merge(vector<int> &v, int l, int mid, int r);
 
-void mergeSort(vector<int> &v, int p, int r)
+void mergeSort(vector<int> &v, int l, int r)
 {
-    if (p >= r)
+    if (l == r)
         return;
+    int mid = (l + r) / 2;
 
-    int q = (p + r) / 2;
+    mergeSort(v, l, mid);
+    mergeSort(v, mid + 1, r);
 
-    mergeSort(v, p, q);
-    mergeSort(v, q + 1, r);
-    merge(v, p, q, r);
+    merge(v, l, mid, r);
 }
 
-void merge(vector<int> &v, int p, int q, int r)
-{ /*
-     p = starting index of vector
-     q=mid ind
-     r= ending index of vector
-   */
+void merge(vector<int> &v, int l, int mid, int r)
+{
+    int l_s = mid - l + 1;
+    int r_s = r - mid;
 
-    int n1 = q - p + 1;
-    int n2 = r - q;
+    vector<int> L(l_s + 1);
+    vector<int> R(r_s + 1);
+    L[l_s] = INT_MAX;
+    R[r_s] = INT_MAX;
 
-    vector<int> L(n1 + 1);
-    vector<int> R(n2 + 1);
-
-    for (int i = 0; i < n1; i++)
+    for (int i = 0; i < l_s; i++)
     {
-        L[i] = v[p + i];
+        L[i] = v[i + l];
     }
 
-    for (int i = 0; i < n2; i++)
+    for (int i = 0; i < r_s; i++)
     {
-        R[i] = v[q + i + 1];
+        R[i] = v[i + mid + 1];
     }
 
-    L[n1] = INF;
-    R[n2] = INF;
-
-    int i = 0, j = 0;
-    for (int k = p; k <= r; k++)
+    int l_i = 0, r_i = 0;
+    for (int k = l; k <= r; k++)
     {
-        if (L[i] <= R[j])
+        if (L[l_i] <= R[r_i])
         {
-            v[k] = L[i];
-            i++;
+            v[k] = L[l_i];
+            l_i++;
         }
         else
         {
-            v[k] = R[j];
-            j++;
+            v[k] = R[r_i];
+            r_i++;
         }
     }
 }
@@ -72,18 +58,17 @@ void merge(vector<int> &v, int p, int q, int r)
 int main(void)
 {
     int n;
-    cout<<"Enter # of values: ";
-    cin>>n;
-    vector<int>v(n);
-    cout<<endl<<"Enter values: ";
-    for(int i=0;i<n;i++)
+    cout << "Enter # of values: ";
+    cin >> n;
+    vector<int> v(n);
+    cout << endl
+         << "Enter values: ";
+    for (int i = 0; i < n; i++)
     {
-        cin>>v[i];
+        cin >> v[i];
     }
-        
-        
-    mergeSort(v, 0, v.size() - 1);
 
+    mergeSort(v, 0, v.size() - 1);
 
     for (auto it : v)
     {
@@ -92,3 +77,10 @@ int main(void)
 
     return 0;
 }
+
+/*
+
+    7
+    20 10 25 35 10 -5 -100
+
+*/

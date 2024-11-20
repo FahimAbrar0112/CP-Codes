@@ -1,48 +1,68 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int lcm(int a, int b)
-{
-     return (a * b) / __gcd(a, b);
-}
-int main(void)
-{
-     int a, b, c;
-     cin >> a >> b >> c;
+const int N = 1e5 + 7;
+const int INF = INT_MAX;
 
-     int nth_val;
-     for (int i = min(a, b); c > 0; i++)
+void mergeSort(vector<int> &v, int l, int r);
+void merge(vector<int> &v, int l, int mid, int r);
+
+void mergeSort(vector<int> &v, int l, int r)
+{
+     if (l == r)
+          return;
+     int mid = (l + r) / 2;
+
+     mergeSort(v, l, mid);
+     mergeSort(v, mid + 1, r);
+
+     merge(v, l, mid, r);
+}
+
+void merge(vector<int> &v, int l, int mid, int r)
+{
+     int l_s = mid - l + 1;
+     int r_s = r - mid;
+
+     vector<int> L(l_s + 1);
+     vector<int> R(r_s + 1);
+     L[l_s] = INT_MAX;
+     R[r_s] = INT_MAX;
+
+     for (int i = 0; i < l_s; i++)
      {
-          if (i % a == 0 || i % b == 0)
+          L[i] = v[i + l];
+     }
+
+     for (int i = 0; i < r_s; i++)
+     {
+          R[i] = v[i + mid + 1];
+     }
+
+     int l_i = 0, r_i = 0;
+     for (int k = l; k <= r; k++)
+     {
+          if (L[l_i] <= R[r_i])
           {
-               // cout<<nth_val<<" ";
-               nth_val = i;
-               c--;
+               v[k] = L[l_i];
+               l_i++;
+          }
+          else
+          {
+               v[k] = R[r_i];
+               r_i++;
           }
      }
+}
 
-     // cout << "N" << nth_val << endl;
+int main(void)
+{
+     vector<int> v = {5, 4, 2, 1, 8, 21, 56, 2, 12, -34};
 
-     int lcm_ = lcm(a, b);
-     int step_size;
-     if (nth_val % lcm_ == 0)
+     mergeSort(v, 0, 4);
+     for(auto it:v)
      {
-          step_size = lcm_;
+          cout<<it<<" ";
      }
-     else if (nth_val % a == 0)
-     {
-          step_size = a;
-     }
-     else if (nth_val % b == 0)
-     {
-          step_size = b;
-     }
-
-     while (nth_val >= 0)
-     {
-          cout << nth_val << " ";
-          nth_val -= step_size;
-     }
-
-     
+     return 0;
 }
