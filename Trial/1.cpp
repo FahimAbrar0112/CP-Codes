@@ -1,68 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5 + 7;
-const int INF = INT_MAX;
-
-void mergeSort(vector<int> &v, int l, int r);
-void merge(vector<int> &v, int l, int mid, int r);
-
-void mergeSort(vector<int> &v, int l, int r)
+// Lambda function for hashing a pair
+auto pair_hash = [](const pair<int, int> &p)
 {
-     if (l == r)
-          return;
-     int mid = (l + r) / 2;
+     return p.first * 31 + p.second;
+};
 
-     mergeSort(v, l, mid);
-     mergeSort(v, mid + 1, r);
-
-     merge(v, l, mid, r);
-}
-
-void merge(vector<int> &v, int l, int mid, int r)
+int main()
 {
-     int l_s = mid - l + 1;
-     int r_s = r - mid;
 
-     vector<int> L(l_s + 1);
-     vector<int> R(r_s + 1);
-     L[l_s] = INT_MAX;
-     R[r_s] = INT_MAX;
+     // Declare unordered_map with lambda hash
+     unordered_map<pair<int, int>, string, decltype(pair_hash)> m(10, pair_hash);
 
-     for (int i = 0; i < l_s; i++)
+     // Insert elements
+     m[{1, 2}] = "apple";
+     m[{3, 4}] = "mango";
+
+     // Access and print elements
+     for (const auto &pair : m)
      {
-          L[i] = v[i + l];
+          cout << "Key: (" << pair.first.first << ", " << pair.first.second
+               << ") -> Value: " << pair.second << endl;
      }
 
-     for (int i = 0; i < r_s; i++)
-     {
-          R[i] = v[i + mid + 1];
-     }
-
-     int l_i = 0, r_i = 0;
-     for (int k = l; k <= r; k++)
-     {
-          if (L[l_i] <= R[r_i])
-          {
-               v[k] = L[l_i];
-               l_i++;
-          }
-          else
-          {
-               v[k] = R[r_i];
-               r_i++;
-          }
-     }
-}
-
-int main(void)
-{
-     vector<int> v = {5, 4, 2, 1, 8, 21, 56, 2, 12, -34};
-
-     mergeSort(v, 0, 4);
-     for(auto it:v)
-     {
-          cout<<it<<" ";
-     }
      return 0;
 }
