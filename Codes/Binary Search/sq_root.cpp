@@ -62,6 +62,13 @@ int main(void)
     //  sq_Root(2);
     // cout<<pow(2,1.0/2)<<endl;
 
-    Nth_Root(10, 3);
-    cout << pow(10, 1.0 / 3) << endl;
+    sq_Root(4);
+    cout<<pow(4,1/2)<<endl;
+
+    // Nth_Root(10, 3);
+    // cout << pow(10, 1.0 / 3) << endl;
+
+
+
+
 }
