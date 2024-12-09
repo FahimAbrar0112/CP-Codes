@@ -1,0 +1,1 @@
+{"name":"Local: TooLazy","url":"d:\\Coding\\CP-Codes\\Codes\\Contest\\4\\TooLazy.cpp","tests":[{"id":1733760826971,"input":"6\n10 0\n0 10\n10 2\n0 0\n0 2\n10 10","output":"80\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Coding\\CP-Codes\\Codes\\Contest\\4\\TooLazy.cpp","group":"local","local":true}

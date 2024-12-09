@@ -1,3 +1,5 @@
+// https://www.hackerearth.com/problem/algorithm/help-joe-ii/
+
 #include <bits/stdc++.h>
 using namespace std;
 

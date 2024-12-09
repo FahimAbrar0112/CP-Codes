@@ -1,3 +1,5 @@
+// https://www.hackerearth.com/problem/algorithm/help-joe-ii/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -27,7 +29,7 @@ int main(void)
         {
             maxV = max(((value + x) % m), maxV);
         }
-        cout<<maxV<<endl;
+        cout << maxV << endl;
     }
 
     return 0;
