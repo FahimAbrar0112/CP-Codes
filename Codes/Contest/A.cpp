@@ -1,89 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+const int N=1e5+7;
+const int INF = INT_MAX;
 
-int main(int argc,char * argv[])
-{   
-    int t;
-    cin >> t;
-    while (t--)
+
+
+int main(void)
+{
+    map<int,int>mp;
+    mp[11]=123;
+    mp[1]=2;
+    mp[4]=1234;
+
+    for(auto x:mp)
     {
-        
-        string s;
-        cin >> s;
-        int len=s.size();
-        //1
-        if(s[0]=='a'&&s[len-1]=='a')
-        {   
-            string tmp;
-            for(int i=1;i<len-1 ;i++)
-            {
-                tmp.push_back(s[i]);
-            }
-            cout<<s[0]<<" "<<tmp<<" "<<s[len-1]<<endl;
-        }
-        //2
-        else if(s[0]=='b'&&s[len-1]=='b')
-        {
-            string tmp;
-            for(int i=1;i<len-1 ;i++)
-            {
-                tmp.push_back(s[i]);
-            }
-            cout<<s[0]<<" "<<tmp<<" "<<s[len-1]<<endl;
-        }
-        //3 4
-        else if(s[0]=='a'&&s[len-1]=='b')
-        {
-            if(s[1]=='b')
-            {
-                string tmp;
-                for(int i=1;i<len-1 ;i++)
-                {
-                    tmp.push_back(s[i]);
-                }
-                cout<<s[0]<<" "<<tmp<<" "<<s[len-1]<<endl;
-            }
-            if(s[1]=='a')
-            {
-                string tmp;
-                for(int i=2;i<=len-1 ;i++)
-                {
-                    tmp.push_back(s[i]);
-                }
-                cout<<s[0]<<" "<<s[1]<<" "<<tmp<<endl;
-            }
-        }
-        //5 
-        else if(s[0]=='b'&&s[len-1]=='a')
-        {
-            string tmp;
-           if(s[1]=='b')
-           {
-                for(int i=1;i<len-1 ;i++)
-                {
-                    tmp.push_back(s[i]);
-                }
-                cout<<s[0]<<" "<<tmp<<" "<<s[len-1]<<endl;
-           } 
-           if(s[1]=='a')
-           {
-                for(int i=2;i<=len-1 ;i++)
-                {
-                    tmp.push_back(s[i]);
-                }
-                cout<<s[0]<<" "<<s[1]<<" "<<tmp<<endl;
-           } 
-            
-        }
-        else
-         cout<<": ("<<endl;
-   }
-        
-    
-    
-    
-
+        cout<<x.first<<" "<<x.second<<endl;
+    }
 
 
     return 0;
