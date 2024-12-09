@@ -9,7 +9,7 @@ int main(void)
     for (int i = 0; i < n; i++)
     {
         cin >> v[i];
-        v[i]%=m;
+        v[i] %= m;
     }
     sort(v.begin(), v.end());
     int q;
@@ -24,7 +24,7 @@ int main(void)
         auto ptr = upper_bound(v.begin(), v.end(), m - 1 - x);
         if (ptr != v.begin())
             ptr--;
-        cout << max((*ptr + x) % m, ((v[n - 1]+x) % m)) << endl;
+        cout << max((*ptr + x) % m, ((v[n - 1] + x) % m)) << endl;
     }
 
     return 0;
