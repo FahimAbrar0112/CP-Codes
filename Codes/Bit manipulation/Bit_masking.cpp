@@ -7,7 +7,7 @@ const int INF = INT_MAX;
 /*
     There are n different type of fruits present in a market.
     Some number of people m go to market and buy everyone different type of fruits.
-    find the common fruit the have bought from the market.
+    find the common fruit they have bought from the market.
 
     4 3
     apple  banana mango lichi 
@@ -102,7 +102,7 @@ int main(void)
     //printBinary(ans);
 
 
-
+    
 
 
     return 0;

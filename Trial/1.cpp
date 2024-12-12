@@ -4,10 +4,8 @@ using namespace std;
 
 
 int main(void)
-{   
-     
-     unordered_map<int,int>mp;
-     mp[-100]=10;
+{
 
-     cout<<mp[-100]<<endl;
+     std::cout << "Size of long long int: " << sizeof(long long int) * 8 << " bits\n";
+     std::cout << "Size of unsigned long long int: " << sizeof(unsigned long long int) * 8 << " bits\n";
 }
