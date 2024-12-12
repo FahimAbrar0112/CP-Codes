@@ -163,9 +163,9 @@ int countSetBit_method2(int n)
 
 long long countSetBit_method3(long long x)
 {
-    long long ct = 1;
+    long long ct = 0;
 
-    while (x > 1)
+    while (x >= 1)
     {
         if (x & 1)
         {
@@ -177,7 +177,7 @@ long long countSetBit_method3(long long x)
     return ct;
 }
 
-int countSetBit_method3(int n)
+int countSetBit_method4(int n)
 {
     return __builtin_popcount(n);
     // for int
@@ -200,7 +200,7 @@ int setBit(int n, int i)
 
 int unsetBit(int n, int ind)
 {
-    return n = (n & (~(1 << ind)));
+    return (n & (~(1 << ind)));
 }
 
 int Toggle_A_Bit(int n, int i)
@@ -222,6 +222,7 @@ int main(void)
 
     cout << ((11 >> 2) & 1) << endl;
     printBinary(11);
+    // printBinary(-11);  // 2's complement = 1's complement+1
     printBinary(setBit(11, 2));
     printBinary(unsetBit(11, 1));
     cout << SetOrNot(11, 2) << endl;
@@ -229,7 +230,12 @@ int main(void)
 
     printBinary(Toggle_A_Bit(11, 3));
     printBinary(Toggle_A_Bit(11, 2));
-    // countSetBit1(11);
+
+    cout << countSetBit_method3(11);
+    cout << countSetBit_method3(0);
+    cout << countSetBit_method3(1);
+
+    cout<<endl;
 
     return 0;
 }
