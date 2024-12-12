@@ -129,5 +129,6 @@ int main(void)
     //     cout << "Person: -> " << i << endl;
     //     cout << masks[i] << endl;
     //     printBinary(masks[i]);
+
     // }
 }
