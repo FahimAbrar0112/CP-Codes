@@ -4,7 +4,12 @@ using namespace std;
 int main(void)
 {
 
-     std::cout << "Size of long long int: " << sizeof(long long int) * 8 << " bits\n";
-     std::cout << "Size of unsigned long long int: " << sizeof(unsigned long long int) * 8 << " bits\n";
-     cout << "GG";
+     string s = "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFT";
+     int ct=0;
+     for(auto val:s)
+     {
+          if(val=='F')
+           ct++;
+     }
+     cout<<ct<<endl;
 }

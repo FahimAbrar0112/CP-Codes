@@ -39,11 +39,15 @@ https://codeforces.com/blog/entry/73558
 
 
 
-5
-4
-1 4 7 9
 6
-2 9 1 7 25 29
+
+8
+4 10 7 1 9 2 29 12
+7
+1 4 7 9 5 29 12
+7
+2 9 1 7 25 29 12
+
 7
 1 23 4 7 9 11 29
 10
@@ -52,7 +56,14 @@ https://codeforces.com/blog/entry/73558
 1 11 29 7
 
 
-output:  0 2 => 4 days
+
+
+output:
+ANS:
+Person-> 2
+Person-> 1
+Person-> 0
+#DYAS: 6
 
 
  */

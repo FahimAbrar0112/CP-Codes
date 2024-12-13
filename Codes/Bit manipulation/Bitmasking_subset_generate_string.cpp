@@ -1,49 +1,47 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-const int N=1e5+7;
+const int N = 1e5 + 7;
 const int INF = INT_MAX;
 
-vector<string> generate(string&nums)
+vector<string> generate(string &nums)
 {
-    int n= nums.size();
-    int subset_size=(1<<n);
-    vector<string>subsets;
-    for(int mask=0;mask<subset_size;mask++)
+    int n = nums.size();
+    int subset_size = (1 << n);
+    vector<string> subsets;
+    for (int mask = 0; mask < subset_size; mask++)
     {
         string subset;
-        for(int i=2;i>=0;i--)
+        for (int i = n-1; i >= 0; i--)
         {
-            if(mask & (1<<i)) 
+            if (mask & (1 << i))
             {
                 subset.push_back(nums[i]);
             }
         }
-       subsets.push_back(subset); 
+        subsets.push_back(subset);
     }
 
-   return subsets; 
-
-
+    return subsets;
 }
 
 int main(void)
 {
     int n;
-    cin>>n;
+    cin >> n;
     string s;
-    cin>>s;
+    cin >> s;
     auto subsets = generate(s);
 
-    for(auto subset:subsets)
+    cout << subsets.size() << endl;
+    for (auto subset : subsets)
     {
-        for(auto val:subset)
+        for (auto val : subset)
         {
-            cout<<val<<" ";
+            cout << val << " ";
         }
-       cout<<endl; 
+        cout << endl;
     }
-
 
     return 0;
 }
