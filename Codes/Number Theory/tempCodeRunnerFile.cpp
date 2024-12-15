@@ -1,10 +1,17 @@
-
-
-    for(int i=1;i<N;i++)
+int binExpItr(int a, int b)
+{
+    long long ans = 1;
+    while (b)
     {
-        for(int j=i;j<N;j+=i)
+        if (b & 1)
         {
-            multiples_ct[i]+=hsh[j];
+            // ans = ans * a;
 
+            ans = (ans * a) % M;
         }
+        b >>= 1;
+        // a = a * a;
+        a = (a * a) % M;
     }
+    return ans;
+}

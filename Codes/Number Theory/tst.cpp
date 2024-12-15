@@ -1,40 +1,45 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <chrono> // For time measurement
+#include <bits/stdc++.h>
+
 using namespace std;
-#define ll Long Long
-#define pb push_back
-#define fr(a,b) for(int i=a; i < b; i++)
-#define rep(i,a,b) for(int i=a; i < b; i++)
-#define mod 1000000007
-#define inf (1LL<<60)
-#define all(x) (x).begin(),(x).end()
-#define prBouble(x) cout << fixed << setprecision(10) << x
-#define triplet pair<ll,pair<<ll,ll>>
-#define goog(tno) cout<< "Case #" << tno << ": "
-#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL)
-#define read(x) int x;cin>>x
-void init_code(){ 
-    
-    fast_io;
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin); 
-    freopen("output.txt", "w", stdout);
-    #endif
-}
-// Code starts from here:
+using namespace chrono;
 
-
-
-
-
-
-
-int main(void)
+int gcd_(int a, int b)
 {
-    init_code();
+    if (a % b == 0)
+        return b;
 
+    return gcd(b, a % b);
+}
 
-    
+int lcm_(int a, int b)
+{
+    return (1ll * a * b) / __gcd(a, b);
+}
+int main()
+{
+    // Start measuring time
+    auto start = high_resolution_clock::now();
 
+    // for (int i = 1; i < 1e8; i++)
+    {
+        __gcd(12, __gcd(18, 20));
+        // gcd(12, gcd(18, 20));
+        // gcd_(12,gcd_(18,20));
 
+        // lcm(12,18);
 
+        // cout<<
+    }
+
+    cout << lcm(12, lcm(18, 20)) << endl;
+    // Stop measuring time
+    auto stop = high_resolution_clock::now();
+
+    // Calculate duration
+    auto duration = duration_cast<milliseconds>(stop - start);
+    cout << "Time taken: " << duration.count() << " ms" << endl;
+
+    return 0;
 }

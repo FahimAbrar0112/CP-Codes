@@ -34,6 +34,7 @@ int main(void)
     
     long long M = 1e9+7;
     cout<< binExp(50,binExp(64,32,M-1),M) <<endl;
+    cout<<binExp(5,13,M)<<endl;
 
 
     return 0;
