@@ -20,18 +20,15 @@ int superPow(int a, vector<int> &b)
 {
 
     long long B = 0;
-    int j = 0;
-    for (int i = b.size() - 1; i >= 0; i--, j++)
+
+    
+
+    reverse(b.begin(), b.end());
+    for (int i = 0; i < b.size(); i++)
     {
-        long long p = binExp(10, j, 1140);
-        B += (((b[i] % 1140) * p) % 1140);
-
+        long long p = binExp(10, i, 1140);
+        B += ((b[i] % 1140) * p) % 1140;
     }
-
-    // for (int val : b)
-    // {
-    //     B = (B * 10 + val) % 1140;
-    // }
 
     return binExp(a, B, 1337);
 }
