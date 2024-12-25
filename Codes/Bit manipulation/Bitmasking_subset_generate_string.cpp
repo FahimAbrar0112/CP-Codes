@@ -12,11 +12,12 @@ vector<string> generate(string &nums)
     for (int mask = 0; mask < subset_size; mask++)
     {
         string subset;
-        for (int i = n-1; i >= 0; i--)
+        for (int bit = 0; bit < n; bit++) 
+        // for (int bit = n-1; bit>=0; bit--)
         {
-            if (mask & (1 << i))
+            if (mask & (1 << bit))
             {
-                subset.push_back(nums[i]);
+                subset.push_back(nums[bit]);
             }
         }
         subsets.push_back(subset);
@@ -26,11 +27,11 @@ vector<string> generate(string &nums)
 }
 
 int main(void)
-{
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
+{ 
+    string s="abc";
+    // cin >> s;
+
+
     auto subsets = generate(s);
 
     cout << subsets.size() << endl;

@@ -27,6 +27,7 @@ void init_code()
     freopen("output.txt", "w", stdout);
 #endif
 }
+
 // Code starts from here:
 
 const int N = 2e6 + 7;
@@ -67,17 +68,16 @@ int main(void)
 
     int n, q;
     cin >> n >> q;
-    vector<int> value(n + 10, 0);
     for (int i = 1; i <= n; i++)
     {
         int x;
         cin >> x;
-        hsh[x] = 1;
+        hsh[x] = 1; // which numbers are present in the arr
     }
 
     for (int i = 2; i < N; i++)
     {
-        if (hsh[i])
+        if (hsh[i]) // marking powers that can be reduced
         {
             for (long long j = i; j < N; j *= i)
             {
@@ -103,6 +103,7 @@ int main(void)
                 int toRemove = x / product;
                 if (canRemove[toRemove] || toRemove == 1)
                 {
+                    // toRemove == 1 check cz, if n=6 then 2*3 => yes
                     isPossible = 1;
                     break;
                 }
