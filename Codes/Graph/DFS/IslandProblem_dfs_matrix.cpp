@@ -1,7 +1,8 @@
 // https : // www.geeksforgeeks.org/problems/find-the-number-of-islands/1
+//  https://leetcode.com/problems/number-of-islands/description/
 
 #include <bits/stdc++.h>
-        using namespace std;
+using namespace std;
 
 class Solution
 {
@@ -26,13 +27,13 @@ public:
             }
         }
 
-        for(int i=0;i<n;i++)
+        for (int i = 0; i < n; i++)
         {
-            for(int j=0;j<m;j++)
+            for (int j = 0; j < m; j++)
             {
-                cout<<vis[i][j]<<" ";
+                cout << vis[i][j] << " ";
             }
-            cout<<endl;
+            cout << endl;
         }
         return ct;
     }
