@@ -3,7 +3,7 @@ using namespace std;
  //ADJACENCY MATRIX: 
 
 
-//Spcae coomplxity of Adjacency AMtrix method is very high = O(N^2)
+//Spcae coomplxity of Adjacency Matrix method is very high = O(N^2)
 // if N>10^6 then it will not work ...as we can make 10^5 elements => so graph[10^2][10^2] will be possible
 const int N = 1e3+10 ;
 int graph[N][N];
