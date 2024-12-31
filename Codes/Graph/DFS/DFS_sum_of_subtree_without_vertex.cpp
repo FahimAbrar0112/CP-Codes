@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
+const int N = 1e5;
 
-const int N = 1e5 + 10;
 vector<int> g[N];
-int depth[N], height[N];
+vector<int> sum(N, 0); 
+ 
 
 void dfs(int vertex, int par = 0)
 {
@@ -12,10 +13,10 @@ void dfs(int vertex, int par = 0)
     {
         if (child == par)
             continue;
-        depth[child] = depth[vertex] + 1;
 
         dfs(child, vertex);
-        height[vertex] = max(height[vertex], height[child] + 1);
+
+        sum[vertex] += sum[child] + child;
     }
 }
 
@@ -32,13 +33,15 @@ int main(int argc, char *argv[])
         g[x].push_back(y);
         g[y].push_back(x);
     }
-    dfs(1);
+    
+    dfs(1); 
 
-    cout << "Node " << " depth " << "HEIGHT" << endl;
+
+    cout << "Node " << "SUM:  "  << endl;
 
     for (int i = 1; i <= n; i++)
     {
-        cout << i << "       " << depth[i] << "         " << height[i] << endl;
+        cout << i << "       " << sum[i] <<  endl;
     }
 
     return 0;

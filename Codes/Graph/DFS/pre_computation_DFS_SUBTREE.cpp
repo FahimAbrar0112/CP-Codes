@@ -2,7 +2,7 @@
 using namespace std;
 
 /**
-    giVEN  Q queries Q<+10^5 
+    giVEN  Q queries Q<=10^5 
     in each query given v,print subtree sum of v 
     and number of even numbers
     in subtree of V
