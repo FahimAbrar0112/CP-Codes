@@ -1,2 +1,8 @@
- // if (g[vertex].size() == 1)
-    //     Sum_[vertex] = sum[vertex];
+  4
+        1 2
+        1 4
+        4 3
+
+
+
+        10 5 12 6
