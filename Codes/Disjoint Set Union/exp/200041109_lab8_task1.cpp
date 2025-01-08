@@ -1,4 +1,4 @@
-
+// https://vjudge.net/problem/CSES-1675
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -71,3 +71,16 @@ int main()
     else
         cout<<TOTAL_COST<<endl;
 }
+
+/*
+
+        5 6
+            1 2 3
+            2 3 5
+            2 4 2
+            3 4 8
+            5 1 7
+            5 4 4
+
+
+*/

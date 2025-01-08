@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 const int INF = INT_MAX;
 int n, m;
 vector<vector<int>> vals;
 vector<vector<int>> level;
 vector<vector<bool>> vis;
 vector<pair<int, int>> movements = {
-    {-1, 0}, {1, 0}, {0, 1}, {0, -1}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}};
+    {-1, 0}, {1, 0}, {0, 1}, {0, -1}, 
+    {-1, -1}, {-1, 1}, {1, 1}, {1, -1}
+};
 
 void reset()
 {
@@ -104,6 +104,6 @@ int main(void)
             }
         }
 
-        cout  << bfs() << endl;
+        cout << bfs() << endl;
     }
 }

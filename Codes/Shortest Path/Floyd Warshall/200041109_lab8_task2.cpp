@@ -1,3 +1,5 @@
+//  https://vjudge.net/contest/545096#problem/B
+
 #include<bits/stdc++.h>
 using namespace std;
 const int N=510;
@@ -61,3 +63,13 @@ int main(void)
 
     return 0;
 }
+
+/*
+
+  2
+0 5
+4 0
+1 2
+
+
+*/

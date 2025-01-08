@@ -1,67 +1,62 @@
-#include<bits/stdc++.h>
+// https : // codeforces.com/problemset/problem/295/B
+#include <bits/stdc++.h>
 using namespace std;
-const int N=510;
-const int INF = 1e9+10;
 
-long long dist[N][N];
-
+vector<vector<long long>> dist;
+vector<int> deletion_order;
 
 int main(void)
-{   
-      int n;
-      cin >> n;
-      for (int i=1; i<=n; i++)
+{
+  int n;
+  cin >> n;
+  dist.resize(n + 5, vector<long long>(n + 5, 0));
+
+  for (int i = 1; i <= n; i++)
+  {
+    for (int j = 1; j <= n; j++)
+    {
+      cin >> dist[i][j];
+    }
+  }
+
+  for (int i = 1; i <= n; i++)
+  {
+    int x;
+    cin >> x;
+    deletion_order.push_back(x);
+  }
+
+  reverse(deletion_order.begin(), deletion_order.end());
+  vector<long long> ans;
+  for (int k = 0; k < n; k++)
+  {
+    int k_node = deletion_order[k];
+    for (int i = 1; i <= n; i++)
+    {
+      for (int j = 1; j <= n; j++)
       {
-        for(int j=1; j<=n; j++)
-        {
-            cin >> dist[i][j];
-        }
+
+        dist[i][j] = min(dist[i][j], dist[i][k_node] + dist[k_node][j]);
       }
-      vector<int>del_order(n);
-      for(int i=0;i<n;i++)
+    }
+    long long sum = 0;
+
+    for (int i = 0; i <= k; i++)
+    {
+      for (int j = 0; j <= k; j++)
       {
-        cin >> del_order[i];
+        int x = deletion_order[i];
+        int y = deletion_order[j];
+        sum += dist[x][y];
       }
-      reverse(del_order.begin(), del_order.end());
-      vector<long long>ans;
+    }
 
-      for(int k=0;k<n;k++)
-      {
-        int k_v=del_order[k];
-        for(int i=1;i<=n;i++)
-        {
-            for(int j=1;j<=n;j++)
-            {
-                long long new_dist = dist[i][k_v]+dist[k_v][j] ;
-                dist[i][j]=min(dist[i][j],new_dist);
-            }
-        }
+    ans.push_back(sum);
+  }
+  reverse(ans.begin(), ans.end());
 
-        long long sum = 0 ;
-        
-        for(int i=0;i<=k;i++)
-        {
-            for(int j=0;j<=k;j++ )
-            {
-                sum+=dist[del_order[i]][del_order[j]];  
-               // cout<<dist[del_order[i]][del_order[j]]<<" "<<del_order[i]<<" "<<del_order[j]<<endl;
-            }
-        }
-       // cout<<endl;
-        ans.push_back(sum);
-      }
-      reverse(ans.begin(),ans.end());
-
-      for(auto val:ans)
-      {
-        cout<<val<<" ";
-      }
-      
-      
-
-    
-
-
-
-    return 0;
+  for (auto val : ans)
+  {
+    cout << val << "  ";
+  }
 }

@@ -4,8 +4,7 @@ using namespace std;
 // BFS can work to find shortest path
 // Condition all edge must have same weight.
 // OR EDGE can't have any weight.
-
-const int N = 1e5 + 10;
+ 
 
 bool vis[8][8];
 int level[8][8];
