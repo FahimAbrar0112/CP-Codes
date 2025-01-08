@@ -1,86 +1,92 @@
-// https://vjudge.net/problem/CSES-1675
-#include<bits/stdc++.h>
+// https : // vjudge.net/problem/CSES-1675
+
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 1e5 + 10;
-int parent[N];
-int Wize[N];
+vector<int> parents(N);
+vector<int> Size(N);
 
-//make -> new node
-//find -> parent of group
-//union -> a,b
 void make(int v)
 {
-    parent[v] = v;
+    parents[v] = v;
+    Size[v] = 1;
 }
+
 int find(int v)
 {
-    if(v == parent[v]) return v;
-    return parent[v] = find(parent[v]); // Path compression
+    if (v == parents[v])
+        return v;
+    return parents[v] = find(parents[v]);
 }
-void Union(int a,int b)
+
+void Union(int a, int b)
 {
     a = find(a);
     b = find(b);
-    if(a!=b)
+    if (a != b)
     {
-        // Union by size
-        if(Wize[a]<Wize[b])
-            swap(a,b);
-        parent[b] = a;
-        Wize[a]+=Wize[b];
+        if (Size[a] < Size[b])
+            swap(a, b);
+        parents[b] = parents[a];
+        Size[a] += Size[b];
     }
 }
-
-int main()
+int main(void)
 {
-    int n,m;
+    int n, m;
     cin >> n >> m;
-    vector<pair<int,pair<int,int>>>edges;
-    for(int i=0;i<m;i++)
+
+    vector<pair<int, pair<int, int>>> edges;
+
+    for (int i = 1; i <= m; i++)
     {
-        int u,v,wt;
+        int u, v, wt;
         cin >> u >> v >> wt;
-        edges.push_back({wt,{u,v}});
+
+        edges.push_back({wt, {u, v}});
     }
-    long long TOTAL_COST = 0;
+
     sort(edges.begin(), edges.end());
-    for(int i = 1;i<=n ;i++) make(i);
-    for(auto &edge : edges)
+
+    long long totalCost = 0;
+
+    for (int i = 1; i <= n; i++)
+    {
+        make(i);
+    }
+
+    for (auto edge : edges)
     {
         int wt = edge.first;
         int u = edge.second.first;
         int v = edge.second.second;
-        if(find(u) == find(v)) continue;
-        Union(u,v);
-        TOTAL_COST += wt;
-    }
-    int flag = 0;
-    for(int i=1;i<n;i++)
-    {
-        if(find(i)!=find(i+1))
+
+        u = find(u);
+        v = find(v);
+
+        if (u != v)
         {
-            flag = 1;
+            Union(u, v);
+            totalCost += wt;
+        }
+    }
+
+    // Check whether all cities can be traversed or not;
+
+    bool isPossible = 1;
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (find(1) != find(i))
+        {
+            isPossible = 0;
             break;
         }
     }
-    if(flag)
-    {
-        cout<<"IMPOSSIBLE"<<endl;
-    }
+
+    if (isPossible)
+        cout << totalCost << endl;
     else
-        cout<<TOTAL_COST<<endl;
+        cout << "IMPOSSIBLE" << endl;
 }
-
-/*
-
-        5 6
-            1 2 3
-            2 3 5
-            2 4 2
-            3 4 8
-            5 1 7
-            5 4 4
-
-
-*/
