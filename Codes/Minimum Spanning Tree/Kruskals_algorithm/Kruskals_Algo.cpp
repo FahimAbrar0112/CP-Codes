@@ -69,6 +69,11 @@ int main(void)
      }
      cout<<total_cost<<endl;
 
+    //  for(int i=1;i<=n;i++)
+    //  {
+    //     cout<<i<<"  "<<parent[i]<<endl;
+    //  }
+
     return 0;
 }
 
