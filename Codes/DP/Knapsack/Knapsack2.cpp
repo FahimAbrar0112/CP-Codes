@@ -7,7 +7,7 @@ long long dp[105][100005] ;
 long long func(int ind,int value_left)
 {
     if(value_left ==0) return 0;
-    if(ind<0) return 1e15;
+    if(ind<0) return 1e15; // inf
     if(dp[ind][value_left]!=-1 ) return dp[ind][value_left]; 
     //Dont choose
     long long ans=func(ind-1,value_left);

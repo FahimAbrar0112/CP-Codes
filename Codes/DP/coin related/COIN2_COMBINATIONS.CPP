@@ -28,9 +28,16 @@ int change(int amount,vector<int>&coins)
 
 int main(int argc,char * argv[])
 {   
-    vector<int> coins = {10};
-    cout<<change(10,coins);
-
+    vector<int> coins = {1,2,5};
+    cout<<change(11,coins)<<endl;
+    for (int i = 0; i <= 3; i++)
+    {
+        for (int j = 0; j <= 11; j++)
+        {
+            cout << dp[i][j] << "  ";
+        }
+        cout << endl;
+    }
     return 0;
 }
 

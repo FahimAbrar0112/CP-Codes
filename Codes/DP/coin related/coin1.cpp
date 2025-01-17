@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N=1e5+10;
+const int N=1e4+10; // amount size
 int dp[N];
 
 int func(int amount,vector<int>&coins)

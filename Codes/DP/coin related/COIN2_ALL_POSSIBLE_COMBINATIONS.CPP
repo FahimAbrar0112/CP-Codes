@@ -31,7 +31,7 @@ int coinChange(vector<int>&coins,int amount)
 int main(int argc,char * argv[])
 {   
     vector<int> coins = {1,2,5};
-    cout<<coinChange(coins,5);
+    cout<<coinChange(coins,5)<<endl;
 
     
 
