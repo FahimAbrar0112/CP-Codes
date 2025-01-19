@@ -1,2 +1,2 @@
-!= -1)
-    //     return dp[index][bought];
+-1);
+        return func(0, nums);
