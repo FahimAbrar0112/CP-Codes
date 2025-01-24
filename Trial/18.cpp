@@ -1,3 +1,5 @@
+#include <bits/stdc++.h>
+using namespace std;
 
 class Solution
 {
@@ -6,9 +8,11 @@ public:
     {
 
         vector<vector<int>> ans;
+        int n = nums.size();
+        if (n < 4)
+            return ans;
 
         sort(nums.begin(), nums.end());
-        int n = nums.size();
         for (int i = 0; i < n - 3; i++)
         {
             if (i > 0 && nums[i] == nums[i - 1])
@@ -23,12 +27,12 @@ public:
 
                 while (left < right)
                 {
-                    int sum = nums[i] + nums[j] + nums[left] + nums[right];
+                    long long sum = 0ll + nums[i] + nums[j] + nums[left] + nums[right];
 
                     if (sum == target)
                     {
-                        vector<int> tmp = {nums[i], nums[j], nums[left], nums[right]};
-                        ans.push_back(tmp);
+
+                        ans.push_back({nums[i], nums[j], nums[left], nums[right]});
                         left++;
                         right--;
 
@@ -41,19 +45,21 @@ public:
                             right--;
                         }
                     }
-                    else if(sum<target)
+                    else if (sum < target)
                     {
                         left++;
                     }
-                    else 
+                    else
                     {
                         right--;
                     }
-
-                    
                 }
             }
         }
         return ans;
     }
 };
+
+int main()
+{
+}
