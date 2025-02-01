@@ -1,1 +1,2 @@
-#define long long ll
+    3 11
+    1 2 5
