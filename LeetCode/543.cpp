@@ -2,39 +2,50 @@
 using namespace std;
 
 // Definition for a binary tree node.
-struct TreeNode
-{
+struct TreeNode {
     int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode* left;
+    TreeNode* right;
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution
-{
+class Solution {
 public:
-    int heightOftree(TreeNode *root)
-    {
-        if (!root)
-            return -1;
+    int maxDiameter = 0;
 
-        int leftHeight = heightOftree(root->left);
+    int height(TreeNode* root) {
+        if (!root) return 0;
 
-        int rightHeight = heightOftree(root->right);
+        int leftHeight = height(root->left);
+        int rightHeight = height(root->right);
 
-        return max(leftHeight,rightHeight)+1;
+        
+        maxDiameter = max(maxDiameter, leftHeight + rightHeight);
 
+        return max(leftHeight, rightHeight) + 1;
     }
 
-    int diameterOfBinaryTree(TreeNode *root)
-    {
-        
+    int diameterOfBinaryTree(TreeNode* root) {
+        height(root); 
+        return maxDiameter;
     }
 };
-int main(void)
-{
+
+int main() {
+    // Example Tree:
+    //       1
+    //      / \
+    //     2   3
+    //    / \   
+    //   4   5
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+
+    Solution solution;
+    cout << "Diameter of the tree: " << solution.diameterOfBinaryTree(root) << endl;
 
     return 0;
 }

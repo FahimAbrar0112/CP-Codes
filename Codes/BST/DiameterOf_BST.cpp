@@ -1,9 +1,5 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-const int N=1e5+7;
-const int INF = INT_MAX;
-
 
 // Definition for a binary tree node.
 struct TreeNode
@@ -16,28 +12,29 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-
-class Solution {
+class Solution
+{
 public:
-
-    int  height(TreeNode* root)
+    int maxDiameter = 0;
+    int height(TreeNode *root)
     {
-        if(!root) return 0;
+        if (!root)
+            return 0;
 
+        int left = height(root->left);
+        int right = height(root->right);
+        maxDiameter = max(maxDiameter, left + right);
 
+        return max(left, right) + 1;
     }
 
-    int maxPathSum(TreeNode* root) {
-        
+    int diameterOfBinaryTree(TreeNode *root)
+    {
+        return height(root);
     }
 };
-
-
-
 int main(void)
 {
-    
-
 
     return 0;
 }
